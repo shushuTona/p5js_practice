@@ -1,0 +1,13 @@
+version: '3'
+services:
+  node:
+    container_name: p5_node
+    build: .
+    ports:
+      - 3000:3000
+    tty: true
+    restart: always
+    command: /sbin/init
+    privileged: true
+    volumes:
+      - .:/p5js_practice
