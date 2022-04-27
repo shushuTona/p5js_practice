@@ -1,8 +1,13 @@
-import './style.css'
+import './style.css';
 
-const app = document.querySelector<HTMLDivElement>('#app')!
-
-app.innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`
+(async () => {
+  const rootElem = document.querySelector<HTMLElement>('main');
+  if(
+    rootElem
+  ) {
+    const filePath = './module/' + rootElem.id + '.ts';
+    const pageRenderFunc = await import(filePath);
+    
+    pageRenderFunc[rootElem.id]();
+  }
+})();
